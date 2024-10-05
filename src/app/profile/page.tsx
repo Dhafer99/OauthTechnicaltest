@@ -1,6 +1,5 @@
 // Profile.tsx
-
-"use client"; // This marks the component as a Client Component
+"use client";
 
 import { useState, useEffect } from 'react';
 
@@ -27,62 +26,70 @@ const Profile = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
     alert('Profile updated successfully');
   };
 
   return (
-    <div>
-      <h2>Modify Your Profile</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nom: </label>
-          <input
-            type="text"
-            name="nom"
-            value={userInfo.nom}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Prénom: </label>
-          <input
-            type="text"
-            name="prenom"
-            value={userInfo.prenom}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Date de Naissance: </label>
-          <input
-            type="date"
-            name="dateNaissance"
-            value={userInfo.dateNaissance}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Adresse: </label>
-          <input
-            type="text"
-            name="adresse"
-            value={userInfo.adresse}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Téléphone: </label>
-          <input
-            type="text"
-            name="telephone"
-            value={userInfo.telephone}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Save</button>
-      </form>
+    <div className="container">
+      <div className="profile-card">
+        <h2 className="title">Modify Your Profile</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>Nom: </label>
+            <input
+              type="text"
+              name="nom"
+              value={userInfo.nom}
+              onChange={handleChange}
+              className="input-field"
+            />
+          </div>
+          <div className="input-group">
+            <label>Prénom: </label>
+            <input
+              type="text"
+              name="prenom"
+              value={userInfo.prenom}
+              onChange={handleChange}
+              className="input-field"
+            />
+          </div>
+          <div className="input-group">
+            <label>Date de Naissance: </label>
+            <input
+              type="date"
+              name="dateNaissance"
+              value={userInfo.dateNaissance}
+              onChange={handleChange}
+              className="input-field"
+            />
+          </div>
+          <div className="input-group">
+            <label>Adresse: </label>
+            <input
+              type="text"
+              name="adresse"
+              value={userInfo.adresse}
+              onChange={handleChange}
+              className="input-field"
+            />
+          </div>
+          <div className="input-group">
+            <label>Téléphone: </label>
+            <input
+              type="text"
+              name="telephone"
+              value={userInfo.telephone}
+              onChange={handleChange}
+              className="input-field"
+            />
+          </div>
+          <button type="submit" className="save-btn">Save</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -14,7 +14,7 @@ const SignInPage = () => {
 
         // Check if the user is within 50 km of Paris
         const distanceFromParis = haversineDistance(latitude, longitude, 48.8566, 2.3522); // Paris coordinates
-        if (distanceFromParis >= 50) {
+        if (distanceFromParis <= 50) {
           setCanAuthenticate(true);
         } else {
           alert('You must be within 50 km of Paris to sign in.');
